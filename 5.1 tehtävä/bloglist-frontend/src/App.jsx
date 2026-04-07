@@ -31,6 +31,7 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
+      blogService.setToken(user.token)
     } catch {
       setErrorMessage('wrong credentials')
       setTimeout(() => {
@@ -74,9 +75,10 @@ const App = () => {
   return (
     <div>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      <p>{user.name ? `${user.name} logged in` : `${user.username} logged in`}</p>
+      
 
       <h2>blogs</h2>
+      <p>{user.name ? `${user.name} logged in` : `${user.username} logged in`}</p>
       {blogs.length === 0 ? (
         <p>No blogs made by user</p>
       ) : (
