@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const fs = require('fs')
+const path = require('path')
 
 const app = express()
 
@@ -10,9 +12,34 @@ const users = [
   { username: 'noname', name: 'No Name', password: 'yesman' }
 ]
 
-const blogs = [
-  { id: 1, title: 'this is a blog post yup defineadly true dont doubt it its true', author: 'Onni Hölttä', url: 'https://github.com/Juoksumatto/Fullstack-5', likes: 72376 },
-]
+const BLOGS_FILE = path.join(__dirname, 'blogs.json')
+
+let blogs = []
+try {
+  if (fs.existsSync(BLOGS_FILE)) {
+    const data = fs.readFileSync(BLOGS_FILE, 'utf8')
+    blogs = JSON.parse(data)
+  } else {
+    blogs = [
+      { id: 1, title: 'this is a blog post yup defineadly true dont doubt it its true', author: 'Onni Hölttä', url: 'https://github.com/Juoksumatto/Fullstack-5', likes: 72376 },
+      { id: 2, title: 'Now this is not a blog post I think', author: 'Onni Hölttä', url: 'https://github.com/Juoksumatto/Fullstack-5', likes: 23}
+    ]
+  }
+} catch (error) {
+  console.error('Error loading blogs:', error)
+  blogs = [
+    { id: 1, title: 'this is a blog post yup defineadly true dont doubt it its true', author: 'Onni Hölttä', url: 'https://github.com/Juoksumatto/Fullstack-5', likes: 72376 },
+    { id: 2, title: 'Now this is not a blog post I think', author: 'Onni Hölttä', url: 'https://github.com/Juoksumatto/Fullstack-5', likes: 23}
+  ]
+}
+
+const saveBlogs = () => {
+  try {
+    fs.writeFileSync(BLOGS_FILE, JSON.stringify(blogs, null, 2))
+  } catch (error) {
+    console.error('Error saving blogs:', error)
+  }
+}
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body
@@ -47,6 +74,7 @@ app.put('/api/blogs/:id', (req, res) => {
   }
 
   blog.likes = likes
+  saveBlogs()
   res.json(blog)
 })
 
@@ -71,6 +99,7 @@ app.post('/api/blogs', (req, res) => {
   }
 
   blogs.push(newBlog)
+  saveBlogs()
   res.status(201).json(newBlog)
 })
 
