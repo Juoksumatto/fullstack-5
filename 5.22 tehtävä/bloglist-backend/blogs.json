@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "a new blog",
+    "author": "Onni",
+    "url": "https://github.com/Juoksumatto/fullstack-5",
+    "likes": 1,
+    "userId": "noname",
+    "user": {
+      "name": "No Name",
+      "username": "noname"
+    }
+  },
+  {
+    "id": 2,
+    "title": "blog",
+    "author": "onni",
+    "url": "https://github.com/Juoksumatto/fullstack-5",
+    "likes": 0,
+    "userId": "noname",
+    "user": {
+      "name": "No Name",
+      "username": "noname"
+    }
+  },
+  {
+    "id": 3,
+    "title": "blog to be deleted",
+    "author": "Onni Hölttä",
+    "url": "https://github.com/Juoksumatto/fullstack-5",
+    "likes": 0,
+    "userId": "noname",
+    "user": {
+      "name": "No Name",
+      "username": "noname"
+    }
+  }
+]
