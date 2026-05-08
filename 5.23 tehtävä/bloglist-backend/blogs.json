@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "least liked 1778223172168",
+    "author": "Author",
+    "url": "https://example.com/1",
+    "likes": 0,
+    "userId": "noname",
+    "user": {
+      "name": "No Name",
+      "username": "noname"
+    }
+  },
+  {
+    "id": 2,
+    "title": "most liked 1778223172168",
+    "author": "Author",
+    "url": "https://example.com/2",
+    "likes": 1,
+    "userId": "noname",
+    "user": {
+      "name": "No Name",
+      "username": "noname"
+    }
+  }
+]
