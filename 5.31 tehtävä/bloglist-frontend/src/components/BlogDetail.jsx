@@ -101,7 +101,7 @@ const BlogDetail = ({ blogs, onLike, onRemove, currentUser }) => {
       <p>Likes: {blog.likes || 0} </p>
       {isCreator && <button onClick={handleRemove}>remove</button>}
       <br />
-      <Link to="/blogs">Back to blogs</Link>
+      <BButton onClick={() => navigate('/blogs')}>Back to blogs</BButton>
     </Div>
   )
 }
